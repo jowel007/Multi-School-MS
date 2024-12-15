@@ -1,0 +1,17 @@
+->super Admin
+->School
+->Admin work with permission provided by school
+->Teacher
+->student
+->Parent
+->front office (Admission Query, Phone Call)
+->Academics
+->Fees Collection
+->Examination
+->Attendance
+->communication
+->Homework
+->Notification
+->Chat
+->settings
+->change password
