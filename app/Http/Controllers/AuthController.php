@@ -13,4 +13,8 @@ class AuthController extends Controller
     public function forgot(){
         return view('auth/forgot');
     }
+
+    public function dashboard(){
+        return view('dashboard');
+    }
 }
