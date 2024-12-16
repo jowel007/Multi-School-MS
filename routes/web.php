@@ -17,6 +17,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/',[AuthController::class,'login']);
+Route::post('/',[AuthController::class,'SMSlogin']);
 Route::get('forgot',[AuthController::class,'forgot']);
 
 
