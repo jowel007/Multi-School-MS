@@ -26,6 +26,7 @@ Route::group(['middleware'=>'common'], function(){
     Route::get('panel/dashboard',[DashboardController::class,'dashboard']);
     Route::get('panel/school',[SchoolController::class,'schoolList']);
     Route::get('panel/school/create',[SchoolController::class,'CreateSchool']);
+    Route::post('panel/school/add',[SchoolController::class,'AddSchool']);
 });
 
 

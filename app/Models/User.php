@@ -41,4 +41,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    static public function getSchool()
+    {
+        return self::select('*')
+                    ->where('is_admin', '=', 3)
+                    ->where('is_delete', '=', 0)
+                    ->orderBy('id','desc')
+                    ->get();
+    }
+
+    public function getProfile()
+    {
+        if(!empty($this->profile_pic) && file_exists('upload/school_profile/'.$this->profile_pic))
+        {
+            return url('upload/school_profile/'.$this->profile_pic);
+        }
+        else
+        {
+            return "";
+        }
+    }
+
 }
