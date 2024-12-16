@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\SchoolController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('logout',[AuthController::class,'logout']);
 
 Route::group(['middleware'=>'common'], function(){
     Route::get('panel/dashboard',[DashboardController::class,'dashboard']);
+    Route::get('panel/school',[SchoolController::class,'schoolList']);
+    Route::get('panel/school/create',[SchoolController::class,'CreateSchool']);
 });
 
 
