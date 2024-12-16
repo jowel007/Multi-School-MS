@@ -19,6 +19,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/',[AuthController::class,'login']);
 Route::post('/',[AuthController::class,'SMSlogin']);
 Route::get('forgot',[AuthController::class,'forgot']);
+Route::get('logout',[AuthController::class,'logout']);
+
+Route::group(['middleware'=>'common'], function(){
+    Route::get('panel/dashboard',[DashboardController::class,'dashboard']);
+});
 
 
-Route::get('panel/dashboard',[DashboardController::class,'dashboard']);

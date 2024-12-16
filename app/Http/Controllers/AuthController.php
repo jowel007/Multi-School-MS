@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Hash;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthController extends Controller
 {
     public function login(){
@@ -30,5 +31,10 @@ class AuthController extends Controller
         else{
             return redirect()->back()->with('error','enter your correct email and password');
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect(url(''));
     }
 }
