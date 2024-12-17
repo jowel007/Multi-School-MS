@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 @include('_message')
                 <div class="panel panel-default">
-                    
+
                     <div class="panel-heading ui-draggable-handle">
                         <h3 class="panel-title">School List</h3>
                         <a class="btn btn-lg btn-danger pull-right" href="{{ url('panel/school/create') }}">Create School</a>
@@ -39,8 +39,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($getSchool as $value)
-                                        
-                                    
+
+
                                     <tr>
                                         <td>{{ $value->id }}</td>
                                         <td>
@@ -60,10 +60,13 @@
                                         </td>
                                         <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                         <td>
-                                            <button class="btn btn-default btn-rounded btn-sm"><span
-                                                    class="fa fa-pencil"></span></button>
-                                            <button class="btn btn-danger btn-rounded btn-sm"
-                                                onclick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
+                                            <a href="{{ url('panel/school/edit/'.$value->id) }}" class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></a>
+                                            <a href="{{ url('panel/school/delete/'.$value->id) }}"
+                                                onclick="return confirm('Are you sure you want to delete?');"
+                                                class="btn btn-danger btn-rounded btn-sm">
+                                                <span class="fa fa-times"></span>
+                                             </a>
+                                            {{-- <a href="{{ url('panel/school/delete/'.$value->id') }}" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></a> --}}
                                         </td>
                                     </tr>
                                     @endforeach

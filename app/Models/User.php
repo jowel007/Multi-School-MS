@@ -45,11 +45,16 @@ class User extends Authenticatable
 
     static public function getSchool()
     {
-        return self::select('*')
+        return User::select('*')
                     ->where('is_admin', '=', 3)
                     ->where('is_delete', '=', 0)
                     ->orderBy('id','desc')
                     ->get();
+    }
+
+    static public function getSingleEditData($id)
+    {
+        return User::find($id);
     }
 
     public function getProfile()
@@ -63,5 +68,7 @@ class User extends Authenticatable
             return "";
         }
     }
+
+
 
 }
