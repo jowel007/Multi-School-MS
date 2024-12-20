@@ -7,11 +7,11 @@
         </li>
         <li class="xn-profile">
             <a href="#" class="profile-mini">
-                <img src="{{ url('public') }}/assets/images/users/avatar.jpg" alt="John Doe"/>
+                <img src="{{ url('public') }}/assets/images/users/avatar.jpg" alt="John Doe" />
             </a>
             <div class="profile">
                 <div class="profile-image">
-                    <img src="{{ url('public') }}/assets/images/users/avatar.jpg" alt="John Doe"/>
+                    <img src="{{ url('public') }}/assets/images/users/avatar.jpg" alt="John Doe" />
                 </div>
                 <div class="profile-data">
                     <div class="profile-data-name">John Doe</div>
@@ -24,10 +24,16 @@
             </div>
         </li>
 
-        <li class="{{ (Request::segment(2) == 'dashboard') ? 'active' : '' }} ">
-            <a href="{{ url('panel/dashboard') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+        <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : '' }} ">
+            <a href="{{ url('panel/dashboard') }}"><span class="fa fa-desktop"></span> <span
+                    class="xn-text">Dashboard</span></a>
         </li>
-        <li class="{{ (Request::segment(2) == 'school') ? 'active' : '' }} ">
+
+        <li class="{{ Request::segment(2) == 'admin' ? 'active' : '' }} ">
+            <a href="{{ url('panel/admin') }}"><span class="fa fa-user"></span> <span class="xn-text">Admin</span></a>
+        </li>
+
+        <li class="{{ Request::segment(2) == 'school' ? 'active' : '' }} ">
             <a href="{{ url('panel/school') }}"><span class="fa fa-user"></span> <span class="xn-text">School</span></a>
         </li>
 
