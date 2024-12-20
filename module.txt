@@ -1,5 +1,5 @@
 ->super Admin
-->School
+->School - crud
 ->Admin work with permission provided by school
 ->Teacher
 ->student
