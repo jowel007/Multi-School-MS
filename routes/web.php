@@ -4,19 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SchoolController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/', [AuthController::class, 'SMSlogin']);
@@ -64,4 +55,8 @@ Route::group(['middleware' => 'admin'], function () {
 
 
 
-Route::group(['middleware' => 'school'], function () {});
+Route::group(['middleware' => 'school'], function () {
+    Route::get('panel/teacher', [TeacherController::class, 'TeacherList']);
+    Route::get('panel/teacher/create', [TeacherController::class, 'CreateTeacher']);
+    Route::post('panel/teacher/add', [TeacherController::class, 'AddTeacher']);
+});

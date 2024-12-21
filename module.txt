@@ -1,7 +1,29 @@
 ->super Admin
 ->School - crud
+           - name
+           - picture
+           - email
+           - password
+           - address
+           - status
 ->Admin work with permission provided by school
 ->Teacher
+        - First name
+        - last name
+        - gender
+        - date of birth
+        - date of joining
+        - mobile number
+        - marital status
+        - profile pic
+        - current addres
+        - permanent address
+        - qualification
+        - work experence
+        - note
+        - status
+        - email
+        - password
 ->student
 ->Parent
 ->front office (Admission Query, Phone Call)
