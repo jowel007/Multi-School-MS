@@ -32,11 +32,28 @@
                             </div>
 
                             <div class="col-md-2">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" placeholder="Email"
+                                       value="{{ Request::get('name') }}" name="name" id="">
+                            </div>
+
+                            <div class="col-md-2">
                                 <label for="">Email</label>
                                 <input type="text" class="form-control" placeholder="Email"
                                        value="{{ Request::get('email') }}" name="email" id="">
                             </div>
 
+
+                            <div class="col-md-2">
+                                <label for="">Gender</label>
+                                <select class="form-control" name="gender" id="exampleFormControlSelect1">
+                                    <option>Select Gender</option>
+                                    <option {{ Request::get('gender') == 'Male' ? 'selected' : '' }} value="Male">Male
+                                    </option>
+                                    <option {{ Request::get('gender') == 'Female' ? 'selected' : '' }} value="100">
+                                        FeMale</option>
+                                </select>
+                            </div>
 
                             <div class="col-md-2">
                                 <label for="">Status</label>
@@ -79,6 +96,11 @@
                                     <th>Image</th>
                                     <th>name</th>
                                     <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>DOB</th>
+                                    <th>Date of Joining</th>
+                                    <th>Contact</th>
+                                    <th>marital status</th>
                                     <th>Address</th>
                                     <th>Status</th>
                                     <th>Created Date</th>
@@ -87,10 +109,48 @@
                                 </thead>
                                 <tbody>
 
+                                @forelse ($getRecord as $value)
                                     <tr>
-                                        <td colspan="100%"> No Record Found</td>
+                                        <td>{{ $value->id }}</td>
+                                        <td>
+                                            @if (!empty($value->getTeachersprofile()))
+                                                <img style="width:80px;height: 50px; border-radius: 50%"
+                                                     src="{{ $value->getTeachersprofile() }}" alt="">
+                                            @endif
+                                        </td>
+                                        <td>{{ $value->name }}</td>
+                                        <td>{{ $value->email }}</td>
+                                        <td>{{ $value->gender }}</td>
+                                        <td>{{ $value->date_of_birth }}</td>
+                                        <td>{{ $value->date_of_joining }}</td>
+                                        <td>{{ $value->mobile_number}}</td>
+                                        <td>{{ $value->marital_status}}</td>
+                                        <td>{{ $value->address }}</td>
+                                        <td>
+                                            @if ($value->status == 1)
+                                                <span class="label label-success">Active</span>
+                                            @else
+                                                <span class="label label-danger">Inactive</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                                        <td>
+                                            <a href="{{ url('panel/teacher/edit/' . $value->id) }}"
+                                               class="btn btn-default btn-rounded btn-sm"><span
+                                                    class="fa fa-pencil"></span></a>
+                                            <a href="{{ url('panel/teacher/delete/' . $value->id) }}"
+                                               onclick="return confirm('Are you sure you want to delete?');"
+                                               class="btn btn-danger btn-rounded btn-sm">
+                                                <span class="fa fa-times"></span>
+                                            </a>
+                                            {{-- <a href="{{ url('panel/school/delete/'.$value->id') }}" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></a> --}}
+                                        </td>
                                     </tr>
-
+                                    @empty
+                                        <tr>
+                                            <td colspan="100%"> No Record Found</td>
+                                        </tr>
+                                    @endforelse
 
                                 </tbody>
                             </table>
@@ -104,7 +164,7 @@
             </div>
 
             <div class="pull-right">
-{{--                {{ $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() }}--}}
+                {{ $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() }}
             </div>
         </div>
     </div>

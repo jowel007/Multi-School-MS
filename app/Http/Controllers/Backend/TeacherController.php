@@ -12,8 +12,8 @@ use Str;
 class TeacherController extends Controller
 {
     public function TeacherList(){
-//        $data['$getRecord'] = User::getSchool();
-        return view('backend.teacher.list');
+        $data['getRecord'] = User::getTeacher(Auth::user()->id, Auth::user()->is_admin);
+        return view('backend.teacher.list',$data);
     }
 
     public function CreateTeacher()
@@ -23,7 +23,7 @@ class TeacherController extends Controller
 
     public function AddTeacher(Request $request)
     {
-//        dd($request->all());
+    //  dd($request->all());
 
         request()->validate([
             'email' => 'required|email|unique:users',
